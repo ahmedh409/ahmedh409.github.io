@@ -1,30 +1,542 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ahmed H. Hussain - Embedded & Avionics Engineer</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Ahmed Hafeez Hussain</title>
+  <meta name="description" content="Ahmed Hafeez Hussain is an embedded and avionics engineer working on flight firmware, RF/DSP systems, FPGA systems, and hardware." />
+  <meta name="author" content="Ahmed Hafeez Hussain" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://ahmedhafeezhussain.com/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ahmed Hafeez Hussain" />
+  <meta property="og:description" content="Embedded systems, avionics, RF/DSP, FPGA systems, and hardware." />
+  <meta property="og:url" content="https://ahmedhafeezhussain.com/" />
+  <meta name="twitter:card" content="summary" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ahmed Hafeez Hussain",
+    "alternateName": "Ahmed H. Hussain",
+    "url": "https://ahmedhafeezhussain.com/",
+    "jobTitle": "Embedded Software Engineer / Avionics Lead",
+    "sameAs": [
+      "https://github.com/ahmedh409",
+      "https://scholar.google.com/citations?user=IEJigZsAAAAJ&hl=en",
+      "https://www.linkedin.com/in/ahmed-hussain-"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "BESXAR Space Industries"
+    },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Johns Hopkins University" },
+      { "@type": "CollegeOrUniversity", "name": "University of Virginia" }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --text: #151515;
+      --muted: #74746d;
+      --faint: #a5a59d;
+      --rule: #dcdcd5;
+      --accent: #00508d;
+      --max: 860px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #151616;
+        --text: #eeeeea;
+        --muted: #9a9a93;
+        --faint: #686862;
+        --rule: #323330;
+        --accent: #7db7df;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 36px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        "Helvetica Neue", Helvetica, Arial,
+        ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration-color: var(--faint);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color 120ms ease, text-decoration-color 120ms ease;
+    }
+
+    a:hover {
+      color: var(--accent);
+      text-decoration-color: var(--accent);
+    }
+
+    .page {
+      width: min(calc(100% - 36px), var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 30px 0 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-name {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .intro {
+      padding: 92px 0 100px;
+    }
+
+    .intro h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(40px, 7.2vw, 68px);
+      line-height: 1.02;
+      letter-spacing: -0.052em;
+      font-weight: 500;
+    }
+
+    .intro p {
+      max-width: 630px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.5;
+      letter-spacing: -0.012em;
+    }
+
+    .intro p strong {
+      color: var(--text);
+      font-weight: 550;
+    }
+
+    section {
+      padding: 28px 0 78px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 24px;
+      margin-bottom: 38px;
+    }
+
+    .section-label {
+      color: var(--muted);
+      font-family:
+        ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, "Liberation Mono", monospace;
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .section-head p {
+      max-width: 600px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about-copy {
+      max-width: 650px;
+      margin-left: 174px;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .about-copy p {
+      margin: 0 0 16px;
+    }
+
+    .work {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 44px 34px;
+    }
+
+    .work-item {
+      min-width: 0;
+    }
+
+    .work-meta {
+      margin-bottom: 9px;
+      color: var(--faint);
+      font-family:
+        ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, "Liberation Mono", monospace;
+      font-size: 11px;
+      letter-spacing: .035em;
+      text-transform: uppercase;
+    }
+
+    .work-item h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      font-weight: 550;
+    }
+
+    .work-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .work-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 11px;
+      font-size: 13px;
+    }
+
+    .papers {
+      margin-left: 174px;
+    }
+
+    .paper {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 18px;
+      padding: 19px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .paper:first-child {
+      border-top: 1px solid var(--rule);
+    }
+
+    .paper-year {
+      color: var(--faint);
+      font-family:
+        ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, "Liberation Mono", monospace;
+      font-size: 11px;
+      padding-top: 3px;
+    }
+
+    .paper-title {
+      margin: 0 0 4px;
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .paper-meta {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .paper-title a {
+      text-decoration-color: transparent;
+    }
+
+    .paper-title a:hover {
+      text-decoration-color: var(--accent);
+    }
+
+    .elsewhere {
+      margin-left: 174px;
+      display: flex;
+      gap: 12px 18px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 28px 0 46px;
+      border-top: 1px solid var(--rule);
+      color: var(--faint);
+      font-family:
+        ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, "Liberation Mono", monospace;
+      font-size: 11px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 700px) {
+      .intro {
+        padding: 72px 0 82px;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .about-copy,
+      .papers,
+      .elsewhere {
+        margin-left: 0;
+      }
+
+      .work {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        width: min(calc(100% - 26px), var(--max));
+      }
+
+      header {
+        padding-top: 22px;
+      }
+
+      .nav {
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 10px 14px;
+        justify-content: flex-end;
+      }
+
+      .intro h1 {
+        font-size: clamp(38px, 13vw, 56px);
+      }
+
+      .intro p {
+        font-size: 17px;
+      }
+
+      .paper {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
 </head>
 
 <body>
-  <main>
-    <h1>Ahmed H. Hussain</h1>
+  <header>
+    <div class="page nav">
+      <a class="nav-name" href="#top">Ahmed Hafeez Hussain</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#work">work</a>
+        <a href="#research">research</a>
+        <a href="#about">about</a>
+      </nav>
+    </div>
+  </header>
 
-    <p>
-      Electrical engineer working on flight hardware,
-      FPGA/DSP systems, RF hardware, PCB development, and wireless communications.
-    </p>
+  <main id="top">
+    <div class="page intro">
+      <h1>I build embedded systems for spacecraft, radios, and other hardware.</h1>
+      <p>
+        I'm an embedded / avionics engineer at <strong>BESXAR</strong> in Washington, DC.
+        My work spans flight firmware, FPGA/DSP systems, RF, electronics, and test.
+      </p>
+    </div>
 
-    <p>
-      Currently at BESXAR Space Industries. Previously Johns Hopkins APL and Tesla.
-      B.S. University of Virginia; M.S. Johns Hopkins University.
-    </p>
+    <section id="about">
+      <div class="page">
+        <div class="section-head">
+          <div class="section-label">About</div>
+          <p>
+            I like working close to the hardware, especially on systems where software,
+            electronics, and the physical environment all matter.
+          </p>
+        </div>
 
-    <nav>
-      <a href="https://github.com/ahmedh409">GitHub</a>
-      <a href="https://www.linkedin.com/in/ahmed-hussain-">LinkedIn</a>
-      <a href="https://scholar.google.com/citations?hl=en&user=IEJigZsAAAAJ&view_op=list_works&authuser=1&gmla=AKCpqFzvR-5tH0e9YP4Idg3i98dv2KZcTJiqHkiU4rTecm9zBINfKT7XG-PmmUiO1cHc-ccIRurD0xfEbzsFTEKr">Google Scholar</a>
-    </nav>
+        <div class="about-copy">
+          <p>
+            Before BESXAR, I worked on embedded DSP and RF systems at Johns Hopkins APL
+            and battery-management firmware at Tesla. I studied electrical and computer
+            engineering at UVA and later completed an M.S. in ECE at Johns Hopkins.
+          </p>
+          <p>
+            Earlier work included wireless communications research, FPGA / SoC systems,
+            quantum error-correction simulation, and electrical leadership for UVA's solar car.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="page">
+        <div class="section-head">
+          <div class="section-label">Selected work</div>
+          <p>A few projects and research efforts that are representative of what I work on.</p>
+        </div>
+
+        <div class="work">
+          <article class="work-item">
+            <div class="work-meta">Flight hardware · 2026—</div>
+            <h2>BESXAR avionics</h2>
+            <p>
+              Embedded flight software, sensor and data acquisition, onboard storage,
+              electronics integration, PCB bring-up, and environmental test for
+              space-manufacturing hardware.
+            </p>
+            <!-- Add BESXAR's official mission/press-release link here once public. -->
+          </article>
+
+          <article class="work-item">
+            <div class="work-meta">Wireless research · UVA</div>
+            <h2>Unsupervised wireless detection</h2>
+            <p>
+              Physical-layer detection research using synchronized SDR hardware,
+              canonical correlation analysis, MIMO experiments, MATLAB, and GNU Radio.
+            </p>
+            <div class="work-links">
+              <a href="https://ieeexplore.ieee.org/document/10051985" target="_blank" rel="noopener noreferrer">paper</a>
+              <a href="https://github.com/ahmedh409/wireless-cca" target="_blank" rel="noopener noreferrer">code</a>
+              <a href="https://engineering.virginia.edu/news-events/news/shouts-and-whispers" target="_blank" rel="noopener noreferrer">UVA</a>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <div class="work-meta">Media provenance · 2021</div>
+            <h2>Peregrine</h2>
+            <p>
+              A decentralized media-authentication prototype using perceptual hashing,
+              distributed ledgers, peer-to-peer verification, and machine learning.
+              First place in the iDISPLA University Adversarial AI/ML Challenge.
+            </p>
+            <div class="work-links">
+              <a href="https://github.com/ahmedh409/deepfake-detection" target="_blank" rel="noopener noreferrer">code</a>
+              <a href="https://engineering.virginia.edu/news-events/news/uva-undergrads-offer-new-approach-detecting-deepfakes" target="_blank" rel="noopener noreferrer">coverage</a>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <div class="work-meta">FPGA / Linux</div>
+            <h2>Zynq software-defined radio</h2>
+            <p>
+              A Linux-based SDR combining a custom programmable-logic DSP chain,
+              AXI transport, host-side C software, and real-time IQ streaming over
+              gigabit Ethernet.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="page">
+        <div class="section-head">
+          <div class="section-label">Research</div>
+          <p>Peer-reviewed work in wireless communications and signal processing.</p>
+        </div>
+
+        <div class="papers">
+          <article class="paper">
+            <div class="paper-year">2022</div>
+            <div>
+              <h2 class="paper-title">
+                <a href="https://doi.org/10.1109/TCOMM.2022.3217129" target="_blank" rel="noopener noreferrer">
+                  A Novel Linear Precoder Design for Reliable UL/DL Detection in TDD Cellular Networks
+                </a>
+              </h2>
+              <div class="paper-meta">IEEE Transactions on Communications</div>
+            </div>
+          </article>
+
+          <article class="paper">
+            <div class="paper-year">2022</div>
+            <div>
+              <h2 class="paper-title">
+                <a href="https://ieeexplore.ieee.org/document/10051985" target="_blank" rel="noopener noreferrer">
+                  Unsupervised Detection via Artificial Dual-Path Transmission
+                </a>
+              </h2>
+              <div class="paper-meta">56th Asilomar Conference on Signals, Systems, and Computers</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="page">
+        <div class="section-head">
+          <div class="section-label">Elsewhere</div>
+          <p>Profiles and work that make sense to keep somewhere else.</p>
+        </div>
+
+        <div class="elsewhere">
+          <a href="https://github.com/ahmedh409" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://scholar.google.com/citations?user=IEJigZsAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+          <a href="https://www.linkedin.com/in/ahmed-hussain-" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="mailto:aijex.business@gmail.com">Email</a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="page footer-row">
+      <span>ahmedhafeezhussain.com</span>
+      <span>Washington, DC</span>
+    </div>
+  </footer>
 </body>
 </html>
